@@ -45,11 +45,12 @@
     display: flex; flex-direction: column; background: var(--ink); color: #eef6f6;
     border-right: 1px solid rgba(255,255,255,.08);
   }
-  .brand-block { display: flex; gap: 12px; align-items: center; padding: 0 8px 28px; border-bottom: 1px solid rgba(255,255,255,.12); }
-  .brand-mark { width: 42px; height: 42px; display: grid; grid-template-columns: repeat(3,1fr); align-items: end; gap: 2px; padding: 7px; background: var(--orange); color: white; font: 800 11px/1 ui-monospace, monospace; }
-  .brand-mark span:nth-child(2) { transform: translateY(-7px); }
-  .brand-block strong, .sidebar-foot strong { display: block; letter-spacing: .01em; }
-  .brand-block small, .sidebar-foot small { display: block; color: #9eb0bb; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
+  .brand-block { display: block; height: 70px; overflow: hidden; margin: 0 0 28px; background: white; border: 1px solid rgba(255,255,255,.18); }
+  .brand-logo { width: 100%; height: 100%; object-fit: cover; object-position: center; transform: scale(1.04); }
+  .mobile-brand { display: none; width: 150px; height: 42px; overflow: hidden; background: white; }
+  .mobile-brand img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .sidebar-foot strong { display: block; letter-spacing: .01em; }
+  .sidebar-foot small { display: block; color: #9eb0bb; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; }
   .sidebar nav { padding-top: 24px; display: grid; gap: 6px; }
   .nav-link { display: flex; gap: 12px; align-items: center; padding: 11px 12px; color: #b9c6cc; border-left: 2px solid transparent; transition: .18s ease; }
   .nav-link span { font: 600 10px/1 ui-monospace, monospace; color: #738995; }
@@ -170,6 +171,7 @@
   .nav-scrim { display: block; position: fixed; inset: 0; z-index: 25; border: 0; background: rgba(5,18,28,.45); }
   .topbar { height: 62px; padding: 0 18px; }
   .menu-button { display: inline-block; }
+  .mobile-brand { display: block; }
   .topbar-context { display: none; }
   .content { padding: 32px 16px 60px; }
   .page-header { align-items: start; flex-direction: column; margin-bottom: 26px; }

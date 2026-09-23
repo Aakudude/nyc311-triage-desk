@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -18,13 +19,17 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="app-frame">
       <aside className={`sidebar ${open ? "sidebar-open" : ""}`}>
-        <div className="brand-block">
-          <div className="brand-mark" aria-hidden="true"><span>3</span><span>1</span><span>1</span></div>
-          <div>
-            <strong>Triage Desk</strong>
-            <small>NYC operations replay</small>
-          </div>
-        </div>
+        <Link href="/" className="brand-block" aria-label="311 Triage Desk home">
+          <Image
+            src="/311-triage-logo.png"
+            alt="311 Triage Desk"
+            width={1368}
+            height={768}
+            className="brand-logo"
+            priority
+            unoptimized
+          />
+        </Link>
         <nav aria-label="Primary navigation">
           {NAV.map((item) => {
             const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
@@ -49,6 +54,9 @@ export function AppShell({ children }: { children: React.ReactNode }) {
       <div className="workspace">
         <header className="topbar">
           <button className="menu-button" onClick={() => setOpen((value) => !value)} aria-label="Toggle navigation">Menu</button>
+          <Link href="/" className="mobile-brand" aria-label="311 Triage Desk home">
+            <Image src="/311-triage-logo.png" alt="311 Triage Desk" width={1368} height={768} unoptimized />
+          </Link>
           <div className="topbar-context"><span>NYC 311</span><strong>Supervisor workspace</strong></div>
           <a href="https://nyc311-triage-api.onrender.com/docs" target="_blank" rel="noreferrer" className="api-link">API docs ↗</a>
         </header>
