@@ -1,0 +1,72 @@
+Rows: 600,000  Columns: 10  ['unique_key', 'created_date', 'closed_date', 'agency', 'complaint_type', 'descriptor', 'borough', 'open_data_channel_type', 'status', 'due_date']
+
+Blank counts (raw, uncleaned):
+unique_key                     0
+created_date                   0
+closed_date                 6064
+agency                         0
+complaint_type                 0
+descriptor                     0
+borough                        0
+open_data_channel_type         0
+status                         0
+due_date                  597073
+
+Duplicate unique_key: 0 extra rows (0 keys repeated)
+created_date: min=2025-08-29 15:52:47  max=2025-10-31 23:59:58  unparseable=0
+closed_date: min=2025-08-06 10:22:00  max=2026-09-17 19:51:17  unparseable=0
+
+agency:
+agency
+NYPD    331487
+HPD     119019
+DSNY     56508
+DOT      35546
+DEP      34310
+DPR      23130
+
+status:
+status
+Closed         593681
+In Progress      4291
+Pending           843
+Open              473
+Assigned          444
+Started           233
+Unspecified        35
+
+borough:
+borough
+BROOKLYN         179371
+QUEENS           149300
+BRONX            136787
+MANHATTAN        112154
+STATEN ISLAND     22129
+Unspecified         259
+
+complaint_type top 15:
+complaint_type
+Illegal Parking            108826
+Noise - Residential         89916
+Noise - Street/Sidewalk     38734
+HEAT/HOT WATER              35706
+Blocked Driveway            31984
+UNSANITARY CONDITION        23242
+Noise - Commercial          12960
+Dirty Condition             11772
+PLUMBING                    11727
+Abandoned Vehicle           11304
+Noise                       11268
+PAINT/PLASTER               10818
+Street Condition            10468
+Water System                 9517
+Noise - Vehicle              8502
+
+due_date populated: 0.5% overall; by agency (%):
+agency
+DEP     0.0
+DOT     0.0
+DPR     0.0
+DSNY    5.2
+HPD     0.0
+NYPD    0.0

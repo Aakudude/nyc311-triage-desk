@@ -1,0 +1,201 @@
+{
+  "model_version": "v1",
+  "sla_definition": "Portfolio SLA assumption: breach = resolution_hours greater than the per-(agency, complaint_type) 75th percentile of TRAIN closed tickets. Groups below 200 training closures use the agency P75. This is not an official NYC target; due_date was only about 0.5% populated.",
+  "metrics": {
+    "B0_base_rate": {
+      "model": "B0_base_rate",
+      "pr_auc": 0.2800726282342261,
+      "roc_auc": 0.5,
+      "brier": 0.20210865068225267,
+      "base_rate": 0.2800726282342261,
+      "top_decile_precision": 0.2800726282342261,
+      "top_decile_lift": 1.0,
+      "top_decile_recall": 0.1,
+      "n_top": 10133,
+      "tie_policy": "analytic_no_ranking"
+    },
+    "B1_group_lookup": {
+      "model": "B1_group_lookup",
+      "pr_auc": 0.30191871169468204,
+      "roc_auc": 0.527042093475543,
+      "brier": 0.2010470480456505,
+      "base_rate": 0.2800726282342261,
+      "top_decile_precision": 0.29221355965656765,
+      "top_decile_lift": 1.0433492251595113,
+      "top_decile_recall": 0.10432668592770065,
+      "n_top": 10133,
+      "tie_policy": "score_desc_then_unique_key_asc"
+    },
+    "XGBoost": {
+      "model": "XGBoost",
+      "pr_auc": 0.3705461059828379,
+      "roc_auc": 0.599164111556246,
+      "brier": 0.1968900893349908,
+      "base_rate": 0.2800726282342261,
+      "top_decile_precision": 0.40106582453370176,
+      "top_decile_lift": 1.4320065015360535,
+      "top_decile_recall": 0.14318934535973504,
+      "n_top": 10133,
+      "tie_policy": "score_desc_then_unique_key_asc"
+    }
+  },
+  "per_agency_pr_auc": [
+    {
+      "agency": "DEP",
+      "n": 7521,
+      "pr_auc": 0.4211036308875794,
+      "base_rate": 0.2681824225501928
+    },
+    {
+      "agency": "DOT",
+      "n": 6043,
+      "pr_auc": 0.31494101319621326,
+      "base_rate": 0.22141320536157538
+    },
+    {
+      "agency": "DPR",
+      "n": 3408,
+      "pr_auc": 0.6075671098051469,
+      "base_rate": 0.3459507042253521
+    },
+    {
+      "agency": "DSNY",
+      "n": 8040,
+      "pr_auc": 0.3181845724484764,
+      "base_rate": 0.22524875621890547
+    },
+    {
+      "agency": "HPD",
+      "n": 30337,
+      "pr_auc": 0.3852556017555271,
+      "base_rate": 0.33599235257276594
+    },
+    {
+      "agency": "NYPD",
+      "n": 45989,
+      "pr_auc": 0.3272048239526111,
+      "base_rate": 0.25753984648502903
+    }
+  ],
+  "calibration_method": {
+    "method": "none",
+    "validation_ece": 0.022933997480470304
+  },
+  "calibration": [
+    {
+      "bin": 1,
+      "n": 4637,
+      "mean_pred": 0.1818527728319168,
+      "actual_rate": 0.14923441880526203
+    },
+    {
+      "bin": 2,
+      "n": 76493,
+      "mean_pred": 0.25197285413742065,
+      "actual_rate": 0.25921326134417527
+    },
+    {
+      "bin": 3,
+      "n": 18793,
+      "mean_pred": 0.32496148347854614,
+      "actual_rate": 0.37200021284520834
+    },
+    {
+      "bin": 4,
+      "n": 1062,
+      "mean_pred": 0.43129006028175354,
+      "actual_rate": 0.5470809792843692
+    },
+    {
+      "bin": 5,
+      "n": 268,
+      "mean_pred": 0.5349671244621277,
+      "actual_rate": 0.8059701492537313
+    },
+    {
+      "bin": 6,
+      "n": 63,
+      "mean_pred": 0.616953432559967,
+      "actual_rate": 0.873015873015873
+    },
+    {
+      "bin": 7,
+      "n": 22,
+      "mean_pred": 0.710191547870636,
+      "actual_rate": 0.8636363636363636
+    }
+  ],
+  "global_shap": [
+    {
+      "feature": "day_of_week",
+      "mean_abs_shap": 0.09605024009943008
+    },
+    {
+      "feature": "borough",
+      "mean_abs_shap": 0.07317385822534561
+    },
+    {
+      "feature": "agency_open_backlog",
+      "mean_abs_shap": 0.0623495914041996
+    },
+    {
+      "feature": "hour_of_day_created",
+      "mean_abs_shap": 0.04441922903060913
+    },
+    {
+      "feature": "agency_closures_24h",
+      "mean_abs_shap": 0.034438036382198334
+    },
+    {
+      "feature": "sla_target_hours",
+      "mean_abs_shap": 0.03039729781448841
+    },
+    {
+      "feature": "hist_breach_rate_28d",
+      "mean_abs_shap": 0.029547151178121567
+    },
+    {
+      "feature": "agency_arrivals_24h",
+      "mean_abs_shap": 0.026574989780783653
+    },
+    {
+      "feature": "complaint_type_grouped",
+      "mean_abs_shap": 0.02558160200715065
+    },
+    {
+      "feature": "hist_median_res_hrs_28d",
+      "mean_abs_shap": 0.02098492719233036
+    },
+    {
+      "feature": "complaint_open_backlog",
+      "mean_abs_shap": 0.017165549099445343
+    },
+    {
+      "feature": "channel",
+      "mean_abs_shap": 0.008441898040473461
+    }
+  ],
+  "data_quality": {
+    "bronze_rows": 600000,
+    "silver_rows": 597106,
+    "rejected_rows": 2894,
+    "rejects_by_reason": [
+      {
+        "_reject_reason": "resolution_exceeds_180d",
+        "count": 2796
+      },
+      {
+        "_reject_reason": "closed_before_created",
+        "count": 98
+      }
+    ],
+    "label_states": {
+      "closed_outcome": 590882,
+      "open_known_breach": 6224
+    }
+  },
+  "limitations": [
+    "The delivered extract spans only 2025-08-29 through 2025-10-31, so the future test window is 10 days rather than a full month.",
+    "Seven-day purge gaps are preserved. Re-fetch the planned March-October window before claiming full-month evaluation."
+  ]
+}

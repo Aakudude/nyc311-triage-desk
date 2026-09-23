@@ -1,0 +1,19 @@
+{
+  "bronze_rows": 600000,
+  "silver_rows": 597106,
+  "rejected_rows": 2894,
+  "rejects_by_reason": [
+    {
+      "_reject_reason": "resolution_exceeds_180d",
+      "count": 2796
+    },
+    {
+      "_reject_reason": "closed_before_created",
+      "count": 98
+    }
+  ],
+  "label_states": {
+    "closed_outcome": 590882,
+    "open_known_breach": 6224
+  }
+}
