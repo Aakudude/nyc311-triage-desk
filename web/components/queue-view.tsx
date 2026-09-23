@@ -54,7 +54,7 @@ export function QueueView() {
               <thead><tr><th>Ticket</th><th>Agency</th><th>Complaint</th><th>Borough</th><th>Age</th><th>Risk</th><th>State</th>{applied.reveal && <th>Outcome</th>}</tr></thead>
               <tbody>{queue.data.items.map((item) => (
                 <tr key={item.unique_key}>
-                  <td><Link className="table-link mono" href={`/ticket/${item.unique_key}`}>#{item.unique_key}</Link><div className="muted">{shortDate(item.created_at)}</div></td>
+                  <td><Link className="table-link mono" href={`/ticket?id=${encodeURIComponent(item.unique_key)}`}>#{item.unique_key}</Link><div className="muted">{shortDate(item.created_at)}</div></td>
                   <td><span className="badge badge-blue">{item.agency}</span></td>
                   <td><strong>{item.complaint_type}</strong></td>
                   <td>{item.borough}</td>
