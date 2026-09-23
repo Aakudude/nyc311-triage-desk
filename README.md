@@ -23,8 +23,8 @@ NYC Open Data
     -> Leakage-safe ML features
     -> XGBoost + MLflow + SHAP
     -> Exported model/Parquet/JSON artifacts
-    -> FastAPI (no runtime Databricks dependency)
-    -> Next.js frontend (next phase)
+    -> FastAPI on Render (no runtime Databricks dependency)
+    -> Next.js operations workspace on Vercel
 ```
 
 ## Repository
@@ -32,6 +32,7 @@ NYC Open Data
 - `scripts/` — extraction and Databricks notebook-source files
 - `api/app/` — FastAPI application and artifact-backed services
 - `api/data/` — exported model and serving artifacts
+- `web/` — five-view Next.js supervisor workspace
 - `data/profile_report.txt` — raw extract profile summary
 
 The large raw CSV is intentionally excluded from Git.
@@ -43,7 +44,17 @@ py -3.12 -m pip install -r api\requirements.txt
 py -3.12 -m uvicorn app.main:app --app-dir api --reload
 ```
 
-Open `http://127.0.0.1:8000/docs`.
+Open `http://127.0.0.1:8000/docs`. The deployed API is at [nyc311-triage-api.onrender.com](https://nyc311-triage-api.onrender.com).
+
+## Run the frontend locally
+
+```powershell
+Set-Location web
+npm install
+npm run dev
+```
+
+Open `http://localhost:3000`. Set `NEXT_PUBLIC_API_URL` in `web/.env.local` to use a different API deployment.
 
 ## Core endpoints
 

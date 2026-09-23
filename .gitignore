@@ -11,6 +11,12 @@ __pycache__/
 .venv/
 venv/
 
+# Node / Next.js
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+
 # Secrets and local configuration
 .env
 .env.*
